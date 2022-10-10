@@ -7,8 +7,7 @@ const blockedUser = require("../../utils/IsBlocked");
 const validateMongodbId = require("../../utils/validateMongodbID");
 
 const featchUsers = expressAsyncHandler(async (req, res) => {
-  console.log(req.query.search);
-  console.log(req.user._id);
+
   const keyword = req.query.search
     ? {
         $or: [
@@ -25,13 +24,12 @@ const createChatsCtrl = expressAsyncHandler(async (req, res) => {
   const user = req.user;
   blockedUser(user);
   const { userId } = req.body;
-
   let isChat = await Chat.find({
     $and: [
       {
         users: { $elemMatch: { $eq: req.user._id } },
-        users: { $elemMatch: { $eq: userId } },
       },
+      { users: { $elemMatch: { $eq: userId } } },
     ],
   })
     .populate("users", "-password")
@@ -41,6 +39,7 @@ const createChatsCtrl = expressAsyncHandler(async (req, res) => {
     select: "name profilePhoto email",
   });
   if (isChat.length > 0) {
+    // console.log(isChat[0]);
     res.json(isChat[0]);
   } else {
     let chatData = {
@@ -50,10 +49,11 @@ const createChatsCtrl = expressAsyncHandler(async (req, res) => {
 
     try {
       const createdChat = await Chat.create(chatData);
-      const FullChat = await Chat.findOne({ _id: createdChat, _id }).populate(
-        "user",
+      const FullChat = await Chat.findOne({ _id: createdChat._id }).populate(
+        "users",
         "-password"
       );
+     
       res.json(FullChat);
     } catch (error) {
       res.json(error);
@@ -62,7 +62,7 @@ const createChatsCtrl = expressAsyncHandler(async (req, res) => {
 });
 
 const fetchChatsCtrl = expressAsyncHandler(async (req, res) => {
-  console.log(req.user);
+
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
