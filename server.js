@@ -36,9 +36,10 @@ const server=app.listen(PORT,console.log(`server is running at ${PORT}`));
 const io=require("socket.io")(server,{
     pingTimeout:60000,
     cors:{
-        origin:'http://localhost:3000',
+        origin:'https://blogwebapp.vercel.app',
     },
 })
+
 
 io.on("connection",(socket)=>{
     console.log("connected to socket.io");
