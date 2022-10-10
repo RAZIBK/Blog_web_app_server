@@ -15,7 +15,7 @@ const createPostCtrl = expressAsyncHandler(async (req, res) => {
   var isProfane = filter.isProfane(req.body.title, req.body.description);
   if (isProfane) {
     await User.findByIdAndUpdate(_id, {
-      isBlocked: true,
+      isBlocked: true, 
     });
     throw new Error(
       "Create failed because it contains profane words and you have been blocked"
@@ -124,7 +124,9 @@ const deletePostCtrl = expressAsyncHandler(async (req, res) => {
 
 const toggleAddlikeToPostCtrl = expressAsyncHandler(async (req, res) => {
   const { postId } = req.body;
+  
   const logginUser = req?.user?._id;
+  console.log(logginUser);
   const alreadyDisLike = await Dislike.findOne({
     postId: postId,
     userId: logginUser,

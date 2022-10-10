@@ -17,13 +17,13 @@ const { findById } = require("../../model/User/userModel");
 
 const userResgisterCtrl = expressAsyncHandler(async (req, res) => {
   const userExists = await User.findOne({ email: req?.body?.email });
-  console.log(req.body);
+  console.log(userExists);
   if (userExists) throw new Error("User already exists");
   try {
     const user = await User.create({
       name: req?.body?.name,
       // lastName:req?.body?.lastName,
-      email: req?.body?.email,
+      email: req?.body?.email, 
       password: req?.body?.password,
     });
     res.json({ user });

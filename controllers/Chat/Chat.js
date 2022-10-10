@@ -62,6 +62,7 @@ const createChatsCtrl = expressAsyncHandler(async (req, res) => {
 });
 
 const fetchChatsCtrl = expressAsyncHandler(async (req, res) => {
+  console.log(req.user);
   try {
     Chat.find({ users: { $elemMatch: { $eq: req.user._id } } })
       .populate("users", "-password")
