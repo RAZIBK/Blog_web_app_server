@@ -4,8 +4,8 @@
   "description": "Blog app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "server": "nodemon server.js"
+    "start": "node server.js",
+    "server": " server.js"
   },
   "author": "Razi",
   "license": "ISC",
