@@ -14,7 +14,6 @@ It’s a complete blog application where people share their technical knowlodge 
 
 NOTE: Please read the RUN section before opening an issue.
 
-[https://blogwebapp.vercel.app/ on vercel](https://blogwebapp.vercel.app/)
 
 ## Run
 
