@@ -3,7 +3,6 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Demo](#demo)
 - [Run](#run)
 - [Technology](#technology)
 - [Features](#features)
@@ -14,12 +13,6 @@
 It’s a complete blog application where people share their technical knowlodge and it is a stage for people to discuss about modern technologies.
 
 NOTE: Please read the RUN section before opening an issue.
-
-## Demo
-
-![screenshot](mcart.png)
-
-The application is deployed to AWS and can be accessed through the following link:
 
 [https://blogwebapp.vercel.app/ on vercel](https://blogwebapp.vercel.app/)
 
@@ -41,7 +34,7 @@ To run this application, you have to set your own environmental variables. For s
 
 After you've set these environmental variables in the .env file at the root of the project, and intsall node modules using  `npm install`
 
-Now you can run `npm run start` in the terminal and the application should work.
+Now you can run `npm start` in the terminal and the application should work.
 
 ## Technology
 
@@ -55,16 +48,17 @@ The application is built with:
 
 It’s a complete blog application where people share their technical knowlodge and it is a stage for people to discuss about modern technologies..
 
- • Signup 
- • Create Post 
- • Edit Post  
- • add comment 
- • edit comment 
- • edit profile 
- • Follow & Unfollow 
- • Chat & User profile page  
- • User Management 
- • Category Management.
+Modules can do the following:
+
+- User authentication using JWT and password.
+- Users can create and edit posts .
+- Users can like and unlike posts created by other users.
+- Users can comment on posts created by other users.
+- Users can follow and unfollow other users.
+- Users can chat with other users.
+- Admin can view and manage users.
+- Admin can view and manage posts.
+- Admin can view and manage category.
  
 
 ## License
